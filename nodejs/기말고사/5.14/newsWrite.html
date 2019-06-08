@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    제목 : <input type="text" id="text1"><br>
+    내용 : <input type="text" id="text2"><br>
+    작성자 : <input type="text" id="text3"><br>
+    <input type="button" id="btn" value="입력">
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $("#btn").click(function() {
+        var title = $("#text1").val();
+        var text = $("#text2").val();
+        var writer = $("#text3").val();
+        $.ajax({
+            url: '/insert2',
+            data: {
+                title : title,
+                text : text,
+                writer : writer
+            },
+            success: function(response) {
+            location.href = "/newsList"  //이 주소로 알아서 이동
+                console.log(title);
+                console.log(text);
+                console.log(writer);
+            }
+        });
+
+    })
+</script>
+
+</html>

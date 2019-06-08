@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>항공편리스트</title>
+    </head>
+    <body>
+        <input type="button" id="routeBtn" value="항공편입력">
+        <input type="button" id="flightBtn" value="항공기입력">
+        <div id = "divFlight">
+        </div>
+    </body>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    //     //--------루트 버튼 누르면 항공편입력 화면으로 감! (페이지 2)---------\\
+    // $("#페이지2에 입력버튼을 누를때마다").click(function() {
+    // $.ajax({
+    //     url: '/flight',
+    //     data: {},
+    //     success: function(response) {
+    //         for (var i = 0; i < response.length; i++) {
+    //             console.log(response[i].text);
+    //             $("#divFlight").append(`${response[i].title}
+    //                  ${response[i].text} ${response[i].writer}); //onclick은 클릭할때 {}을 실행한다.
+    //         } `
+    //     }
+    // })
+    // });
+    $("#routeBtn").click(function() {
+    $.ajax({
+        url: '/selectFlight',
+        data: {
+        },
+        success: function(response) {
+            //--merge 하기--//
+            $("#divFlight").append(response);
+            location.href = "/flight2"
+        }
+    });
+});
+    </script>
+</html>

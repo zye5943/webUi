@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+<input type="text" id="1" value="">
+<input type="text" id="2" value="">
+<input type="text" id="3" value="">
+<input type="button" id="return3WW" value="return값으로">
+<input type="button" id="return" value="실행부에서">
+
+</body>
+<script>
+    //return 값을 받아서 출력 , 함수 실행부에서 출력
+    $("return3WW").click(function() {
+        var superme = 
+        $.ajax({
+            url: 'getCarPrice',
+            data: {
+                carPrice: carSelect,
+                colorSelect: colorSelect
+            },
+            success: function(data) {
+                $("result").html(data);
+            }
+        })
+    });
+</script>
+
+</html>

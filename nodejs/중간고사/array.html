@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        var arr1 = [];
+        var arr2 = [];
+        var arr3 = [];
+        var arr4 = [];
+        var arr5 = [];
+        var arr6 = [];
+        var arr7 = [];
+        var arr8 = [];
+
+        for (var i = 0; i < 10; i++) {
+            arr1[i] = i + 1;
+        }
+        console.log(arr1);
+
+        for (var i = 0; i < 11; i++) {
+            arr2[i] = i * 2;
+        }
+        console.log(arr2);
+
+        for (var i = 0; i < 7; i++) {
+            arr3[i] = 'abc' + (i + 1);
+        }
+        console.log(arr3);
+
+
+        for (var i = 0; i < 9; i++) {
+            arr4[i] = (i * 3) + 1;
+        }
+        console.log(arr4)
+
+        //arr5 방법1)
+        for (var i = 0; i < 12; i++) {
+            if (i % 2 == 0) {
+                arr5[i] = 0
+            } else {
+                arr5[i] = 1
+            }
+        }
+        console.log(arr5)
+        //arr5 방법2)
+        for (var i = 0; i < 12; i++) {
+            if (i % 4 == 0) {}
+        }
+        console.log(arr5)
+
+        //arr6
+        for (var i = 0; i < 12; i++) {
+            if (i % 4 == 0) {
+                arr6[i] = 0
+            } else if (i % 4 == 1) {
+                arr6[i] = 1
+            } else if (i % 4 == 2) {
+                arr6[i] = 2
+            } else if (i % 4 == 3) {
+                arr6[i] = 3
+            }
+        }
+        console.log(arr6)
+        //arr6 방법2)
+        for (var i = 0; i < 12; i++) {
+            if (i % 4 == 0) {}
+        }
+        console.log(arr6)
+
+        //arr7 방법1)
+        var t = "text"
+        for (var i = 0; i < 9; i++) {
+            arr7[i] = t.repeat(i + 1);
+        }
+        console.log(arr7)
+
+        //arr7 방법2)
+        for (var i = 0; i < 10; i++) {
+            arr7[i + 1] = arr7[i] + "text"
+        }
+        console.log(arr7)
+
+        //arr8 방법1)
+        for (var i = 0; i < 9; i++) {
+            arr8[i] = 10 ** i
+        }
+        console.log(arr8)
+        //arr8 방법2)
+        var n = 1;
+        for (var i = 0; i < 9; i++) {
+            arr8[i] = n;
+            n = n * 10;
+        }
+        console.log(arr8)
+        //--------------//
+        var arr1 = [];
+        for (var i = 0; i < 5; i++) {
+            arr1[i] = i * i;
+        }
+        console.log(arr1);
+
+        var arr2 = [];
+        for (var i = 0; i < 5; i++) {
+            if (i % 2 == 0) {
+                arr2[i] = "J";
+            } else {
+                arr2[i] = "H";
+            }
+        }
+        console.log(arr2);
+
+        var arr3 = [];
+        arr3[0] = 0;
+        for (var i = 2; i < 10; i += 2) {
+            arr3[i / 2] = arr3[i / 2 - 1] + 10;
+        }
+        console.log(arr3);
+
+        var arr4 = [];
+        for (var i = 4; i < 16; i = i + 4) {
+            for (var j = 0; j < 4; j++) {
+                arr4[i - 4 + j] = i - j;
+            }
+        }
+        console.log(arr4);
+
+        var arr = [];
+        for (var i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+        var str = "asd"
+        console.log(str[0]);
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

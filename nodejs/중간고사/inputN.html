@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- //문항 1,2,3에 대하여 각각 라디오 박스가 5개씩 존재(0-4점)
+//각각의 문항에 대하여 가중치가 존재한다.
+//계산 버튼을 클릭했을 때 각 문항의 점수 곱하기 가중치의 총 합을 구해서 출력 -->
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <!-- name은 그룹바이 할 때 사용 -->
+    1번 0<input type="radio" name="radioBtn">
+    1<input type="radio" name="radioBtn" id='numberArea'>
+    2<input type="radio" name="radioBtn">
+    3<input type="radio" name="radioBtn">
+    4<input type="radio" name="radioBtn">
+    가중치 <input type="text" id="inputText"><br>
+
+    2번 0<input type="radio" name="radioBtn1">
+    1<input type="radio" name="radioBtn1">
+    2<input type="radio" name="radioBtn1">
+    3<input type="radio" name="radioBtn1">
+    4<input type="radio" name="radioBtn1">
+    가중치 <input type="text" id="inputText1"><br>
+
+    3번 0<input type="radio" name="radioBtn2">
+    1<input type="radio" name="radioBtn2">
+    2<input type="radio" name="radioBtn2">
+    3<input type="radio" name="radioBtn2">
+    4<input type="radio" name="radioBtn2">
+    가중치 <input type="text" id="inputText2"><br>
+    <span id="span"> </span><br>
+    <input type="button" value="계산" id="btn">
+
+
+</body>
+<script>
+    //버튼 눌렀을 때 작동
+    document.getElementById('btn').addEventListener('click', function() {
+
+        // 버튼들의 배열을 줄 별로 만듦
+        var radios0 = document.getElementsByName('radioBtn');
+        var radios1 = document.getElementsByName('radioBtn1');
+        var radios2 = document.getElementsByName('radioBtn2');
+
+        //가중치에 입력하는 값을 받음
+        var input = document.getElementById('inputText').value;
+        var input1 = document.getElementById('inputText1').value;
+        var input2 = document.getElementById('inputText2').value;
+        var span = document.getElementById('span').value;
+
+        var finalData =0;
+
+        for (var i = 0; i < radios0.length; i++) {
+            if (radios0[i].checked == true) {
+                console.log((i + "") + "x" + (input + "") + "=" + i * input);
+                finalData = finalData + (i * input);
+                break;
+            }
+        }
+
+        for (var j = 0; j < radios1.length; j++) {
+            if (radios1[j].checked) {     //checked는 true/false로 반환됨
+                console.log((j + "") + "x" + (input1 + "") + "=" + j * input1);
+
+                finalData = finalData + (j * input1);
+                break;
+            }
+        }
+        for (var k = 0; k < radios2.length; k++) {
+            if (radios2[k].checked) {
+                console.log((k + "") + "x" + (input2 + "") + "=" + k * input2);
+                finalData = finalData + (k * input2);
+                break;
+            }
+        }
+
+
+        // 최종값 : innerHTML = A 는 A에 있는 값을 span에 넣어준다.
+        document.getElementById('span').innerHTML = String(i)  + "x" + (input + "") + "+" + (j + "") + "x" + (input1 + "") +
+        "+" + (k + "") + "x" + (input2 + "") + "=" + finalData
+
+
+
+        //예외처리) 숫자 검사 isNaN함수: (isNaN(123)= true isNaN(abc)=false)
+
+        // var final = i * input + j * input1 + k * input2;
+        // var data = parseInt(final);
+        //
+        // if (isNaN(data)) {
+        //     alert("숫자를 입력해주세요.");
+        // } else {
+        //     document.getElementById('span').innerHTML = (i + "") + "x" + (input + "") + "+" + (j + "") + "x" + (input1 + "") +
+        //     "+" + (k + "") + "x" + (input2 + "") + "=" + final
+        // }
+
+        //예외처리 1
+
+    //     var final = i * input + j * input1 + k * input2
+    //     try {
+    //         if (final % 2 == 0 || final % 2 == 1) {
+    //             console.log(final);
+    //         }
+    //     } catch (e) {
+    //         alert("숫자를 입력하세요.")
+    //     }
+    //
+    });
+
+
+</script>
+
+</html>

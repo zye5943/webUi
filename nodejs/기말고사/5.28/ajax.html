@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+    <input type="button" id="ajaxBtn" value="ajax">
+    <span id="result"></span>
+    </body>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+
+        $("#ajaxBtn").click(function(){
+
+            $.ajax({
+
+                url: '/requestTest',
+                data: {
+                },
+                success: function(res) {
+                setInterval(function() {
+                console.log(res);
+                $("#result").append(res+ "<br>");
+                }, 1000);
+                //1000이면 1초마다
+
+                }
+            });
+        })
+
+
+
+    </script>
+</html>

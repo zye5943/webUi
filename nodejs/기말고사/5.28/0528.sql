@@ -1,0 +1,1 @@
+INSERT INTO flight(flightName, flightCode, departId, arriveId, departTime, arriveTime) VALUES ("1","2", "3","4","5","6")

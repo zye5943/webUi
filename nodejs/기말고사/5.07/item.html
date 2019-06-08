@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>s
+
+<body>
+    <input type="text" id="price">
+    <input type="button" value="구매" , id="purchaseBtn">
+    <span id="result"></span>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $("#purchaseBtn").click(function() {
+
+        var price = Number($("#price").val());
+
+        $.ajax({
+            url: `http://localhost/item?price=${price}`,
+            data: {},
+            success: function(response) {
+                $("#result").html(response);
+                console.log(response);
+            }
+        });
+    });
+
+    function showMsg(animal){
+        alert(1);
+    }
+    showMsg();     //함수 만든거 호출
+
+    function returnExpress (animal){
+        alert(1);
+    }
+    showMsg();     //함수 만든거 호출
+
+
+    //함수의 조건? 실행. 함수
+    //실행부를 생성을 하고 리턴값을 남김. 함수는 리턴을 만나면 꺼짐.
+
+
+</script>
+
+</html>

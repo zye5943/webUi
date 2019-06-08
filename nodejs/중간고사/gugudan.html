@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+            // 1부터 200까지 숫자를 출력한다.
+            for (var i = 1; i <= 200; i++) {
+                console.log(i);
+
+            //숫자에 3,6,9가 있는지를 판별하기 위해 스트링으로 변환해준다
+            var string = String(i);
+
+            //문자열로 변경한 숫자를, [0]번째 인덱스부터 문자열의 마지막까지
+            // 3,6,9가 있는지 여부를 체크한다
+            for (var j = 0; j < string.length; j++) {
+                if (string[j] == "3" | string[j] == "6" | string[j] == "9") {
+
+                    //3,6,9가 있다면 "짝"을 출력하고 빠져나간다
+                    //3,6,9가 있다면 그 뒤를 체크할 필요가 없기때문
+                    console.log("짝")
+                    break; //break가 없으면 3,6,9의 개수만큼 "짝"
+                } else {
+                    //3,6,9가 없다면 아무것도 안함
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

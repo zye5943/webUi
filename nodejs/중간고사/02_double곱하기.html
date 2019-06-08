@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <!--title을 써주면 인터넷 윗 창에 이름이 뜸 -->
+    <title>글쓰기</title>
+</head>
+
+<body>
+
+    <input type="text" id= "text" placeholder="숫자를 입력하세요">
+    <input type="button" id="button" value="구구단">
+<br>
+<span id =numberArea3></span>
+    <script>
+
+        document.getElementById('button').addEventListener('click', function() {
+        var inputNum = document.getElementById('text').value;
+        var start =""
+        for ( i=1; i <= 15 ; i ++) {
+        start +=  inputNum + "*" + i +"="+ inputNum * i + "<br>";
+    }
+    document.getElementById('numberArea3').innerHTML = start
+    })
+
+
+    </script>
+    </strong>
+</body>
+
+</html>

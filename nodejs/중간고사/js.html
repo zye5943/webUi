@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <input type="text" id="inputText">
+    <input type="text" id="inputText2">
+    <input type="button" value="버튼1" id="button1">
+
+</body>
+<script>
+    document.getElementById('button1').addEventListener('click', function() {
+        sum = Number(document.getElementById('inputText').value) +
+              Number(document.getElementById('inputText2').value)
+        if (sum>=10) {
+            alert("10 이상");
+        }
+        else {
+        alert("10 미만")
+        }
+    });
+</script>
+
+</html>

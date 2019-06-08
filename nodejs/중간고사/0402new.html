@@ -1,0 +1,48 @@
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+    id: <input type="text" id="inputText1">
+    <br>
+    password: <input type="text" id="inputText2">
+    <br>
+    <input type="button" value="로그인" id="button1">
+
+</body>
+<script>
+    document.getElementById('button1').addEventListener('click', function() {
+
+
+        if (document.getElementById('inputText1').value== "polytech" && Number(document.getElementById('inputText2').value) === 12341234)
+        {
+            alert("로그인 성공");
+        }
+        else {
+        alert("로그인 실패")
+        }
+
+// --변수에 담았을때
+        // var a= document.getElementById('inputText1').value
+        // var b= document.getElementById('inputText2').value
+        //
+        //
+        // if (a== "polytech" && b == "12341234")
+        // {
+        //     alert("로그인 성공");
+        // }
+        // else {
+        // alert("로그인 실패")
+        // }
+
+
+
+    });
+
+</script>
+
+</html>

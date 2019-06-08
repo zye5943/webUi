@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <input type="radio" name="radioBtn">
+    <input type="radio" name="radioBtn">
+    <input type="radio" name="radioBtn"><br>
+    <input type="button" value="몇번째" id="btn">
+    <script>
+        document.getElementById('btn').addEventListener('click', function() {
+            var radios = document.getElementsByName('radioBtn'); //getElementsByName은 무조건 배열로 오는거 ! id로 따서 배열이 오게 할 수는 없다. 반대의 경우도 마찬가지
+            // 이름이 radioBtn인 요소들로 배열 생성
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked == true) {
+                    alert(i + 1);
+                }
+            }
+        });
+        // var cars = [];
+        // var car1 = {};
+        // var car2 = {};
+        // car1.color = "red"
+        // car1.weight = "500kg"
+        // car1.number = 1234
+        // car1.kind = "소나타"
+        // car1.accidentHistory = [];
+        // car1.accidentHistory[0] = '2011-03-01';
+        // car1.accidentHistory[0] = '2013-04-16';
+        // console.log(car1);
+        // car2.name = "abc";
+        // car2.abc = 123;
+        //
+        // cars[0] = car1, cars[1] = car2;
+        // console.log(cars);
+        //
+        // console.log(document.getElementsByName('radioBtn')) //[input,input,input,input] :이름이 radioBtn인 아이들을 가져와서 찍어보니까 배열로 찍힘
+        // console.log(document.getElementsByName('radioBtn')[0].checked)
+        // console.log(document.getElementsByName('radioBtn')[1].checked)
+        // console.log(document.getElementsByName('radioBtn')[2].checked)
+    </script>
+</body>
+
+</html>

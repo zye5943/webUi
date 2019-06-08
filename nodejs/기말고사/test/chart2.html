@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+    <input type = "button" id="ajaxBtn" value="주식 그래프">
+    <div id="result"></div>
+
+    </body>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+    $("#ajaxBtn").click(function(){
+
+        $.ajax({
+            //db에 데이터 넣기
+            url: '/insertNew',
+            data: {
+            },
+            success: function(res) {
+            // setInterval(function() {
+            console.log(res);
+            $("#result").append(res+ "<br>");
+
+            var arr ;
+            $("#btn").click(function(){0
+                arr = [];
+                for(var j=0; j < 3; j++){
+                arr.push([ ///////////////////////////////////////////////////들어가야 할 값]);
+            }
+
+                google.charts.load('current', {packages: ['corechart', 'line']});
+                google.charts.setOnLoadCallback(drawCurveTypes);
+            });
+
+
+            function drawCurveTypes() {
+              var data = new google.visualization.DataTable();
+              data.addColumn('number', 'X');
+              data.addColumn('number', 'Dogs');
+              data.addColumn('number', 'Cats');
+              data.addColumn('number', 'Cows');
+
+
+              data.addRows(arr);
+
+              var options = {
+                hAxis: {
+                  title: 'Time'
+                },
+                vAxis: {
+                  title: 'Popularity'
+                },
+                series: {
+                  1: {curveType: 'function'}
+                }
+              };
+
+              var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+              chart.draw(data, options);
+            }
+
+
+
+            }
+        });
+
+    })
+
+    </script>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  1번　　　0
+  <input type="radio" name="line1">
+  1<input type="radio" name="line1">
+  2<input type="radio" name="line1">
+  3<input type="radio" name="line1">
+  4<input type="radio" name="line1">
+  가중치:
+  <input type="text" name="valueText"><br>
+  2번　　　0
+  <input type="radio" name="line2">
+  1<input type="radio" name="line2">
+  2<input type="radio" name="line2">
+  3<input type="radio" name="line2">
+  4<input type="radio" name="line2">
+  가중치:
+  <input type="text" name="valueText"><br>
+  3번　　　0
+  <input type="radio" name="line3">
+  1<input type="radio" name="line3">
+  2<input type="radio" name="line3">
+  3<input type="radio" name="line3">
+  4<input type="radio" name="line3">
+  가중치:
+  <input type="text" name="valueText"><br>
+  <span id="result"></span><br>
+  <input type="button" id="calcBtn" value="계산">
+  <script>
+    var PATTERN = /^[\d]*$/;
+    var resultString = ""
+    var resultInt = 0;
+    var radioLine = [];
+    //radioBtn을 이중배열에 세팅한다.
+    radioLine[0] = document.getElementsByName("line1");
+    radioLine[1] = document.getElementsByName("line2");
+    radioLine[2] = document.getElementsByName("line3");
+    var textLine = document.getElementsByName("valueText");
+
+    var weight = [];
+    var textValue = [];
+    //체크되어 있는 radio의 해당 값을 가져올수 있게한다.
+    document.getElementById("calcBtn").addEventListener('click', function() {
+      for (var i = 0; i < radioLine.length; i++) {
+        for (var j = 0; j < radioLine[i].length; j++) {
+          if (radioLine[i][j].checked) {
+            weight[i] = j;
+          }
+        }
+      }
+
+      for (var k = 0; k < textLine.length; k++) {
+        // 숫자가 아닌 문자의 경우 예외처리
+        // case 1 : 정규표현식
+        // case 2 : 숫자로 나누기를 실행 후(문자는 숫자로 나누지 못하는 것을 이용),try-catch로 예외처리를 해준다 (by 예은)
+        // case 3 : String으로 받은 text내용을 String의 처음부터 끝까지 '0'~'9'의 범위를 벗어나는 순간 예외처리
+        // case 4 : isNaN(스트링) (by 예은)
+        if (!PATTERN.test(textLine[k].value)) {  //정규표현식과 맞지 않다면
+          alert("텍스트 박스에 숫자 외의 문자를 입력할 수 없습니다!!!가중치를 1로 설정합니다.");
+          textValue[k] = 1;
+        } else {  //정규표현식에 맞다면
+          textValue[k] = textLine[k].value
+        }
+        resultInt += weight[k] * textValue[k];
+      }
+
+      resultString = String(weight[0]) + "x" + String(textValue[0]) + " + " +
+                     String(weight[1]) + "x" + String(textValue[1]) + " + " +
+                     String(weight[2]) + "x" + String(textValue[2]) + " = " +
+                     String(resultInt);
+      //다음과 같은 형식으로 편하게 쓸수있다. 하지만 익스플로러에서는 에러가나니 유의하자
+      resultString = `${weight[0]}x${textValue[0]} +
+                      ${weight[1]}x${textValue[1]} +
+                      ${weight[2]}x${textValue[2]} = ${resultInt}`;
+
+      //span에 띄워준다
+      document.getElementById("result").innerHTML = resultString;
+
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <input type="button" value="click" id="testbtn">
+        <input type="button" value="click" id="testbtn2">
+
+    </body>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+    $("#testbtn").click(function(){
+
+        $.ajax({
+            url:'/dbSelectTest',
+            data:{
+            },
+            success:function(response){
+                console.log(response);
+            }
+        });
+    })
+
+
+        </script>
+</html>

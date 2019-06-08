@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <script>
+    var cars = [];
+    //객체 선언 형태
+    var car1 = {};
+    var car2 = {};
+    car1.color = "red";
+    car1.weight = "500kg";
+    car1.number = 1234;
+    car1.kind = "소나타";
+    //객체 프로퍼티로 배열을 가질 수 있다.
+    car1.accidentHistory = [];
+    car1.accidentHistory[0] = "2011-03-01";
+    car1.accidentHistory[1] = "2013-04-16"
+    console.log(car1);
+
+    car2.name = "abc";
+    car2.abc = 123;
+
+    //마찬가지로 배열에 넣을 수 있다.
+    cars[0] = car1, cars[1] = car2;
+    //이와 같이 넣을 수도 있다. {}만쓰면 객체로 인식하는거 같다.
+    cars[2] = {
+      name: "abc",
+      age: 123
+    };
+
+    console.log(cars)
+  </script>
+</body>
+
+</html>

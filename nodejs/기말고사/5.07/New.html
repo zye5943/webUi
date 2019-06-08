@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <input type="text" id="1" value="">
+    <input type="text" id="2" value="">
+    <input type="text" id="3" value=""> <br>
+    <div id="divid"> </div> <br>
+    <input type="button" id="btn1" value="return 값으로">
+    <input type="button" id="btn2" value="실행부에서">
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    //if 이용하는 방법
+    $("#btn2").click(function() {
+        var n1 = $("#1").val();
+        var n2 = $("#2").val();
+        var n3 = $("#3").val();
+        $("#divid").html(f1(n1, n2, n3));
+        console.log(f1(n1,n2,n3));
+
+    })
+    //max로 이용하는 방법
+    $("#btn1").click(function() {
+        var n1 = $("#1").val();
+        var n2 = $("#2").val();
+        var n3 = $("#3").val();
+        $("#divid").html(f2(n1, n2, n3));
+
+    })
+
+    // $("#btn2").click(function() {
+    //     var n1 = $("#1").val();
+    //     var n2 = $("#2").val();
+    //     var n3 = $("#3").val();
+    //     f3(n1, n2, n3)
+    // })
+
+
+
+    //function을 두개 만들기 (return값으로 html 뿌리는 func, 실행부에서 html 뿌리는 func 각각)
+
+    function f1(n1, n2, n3) {
+        if (n1 >= n2 && n1 >= n3) {
+            return n1;
+        } else if (n2 >= n3 && n2 >= n1) {
+            return n2;
+        } else {
+            return n3;
+        }
+    }
+
+    function f2(n1, n2, n3) {
+        var arr = [n1, n2, n3];
+        return Math.max.apply(null, arr) //이렇게 하면 세 값중 가장 큰 걸 리턴!
+    }
+
+    function f3(n1, n2, n3) {
+        var arr = [n1, n2, n3];
+        return $("#divid").html(Math.max.apply(null, arr)) //이렇게 하면 세 값중 가장 큰 걸 리턴!
+    }
+</script>
+
+</html>

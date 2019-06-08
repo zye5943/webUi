@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    이름: <input type="text" id="textarea1"> <br>
+    html: <input type="text" id="textarea2"> <br>
+    javascript: <input type="text" id="textarea3"> <br>
+    css: <input type="text" id="textarea4"> <br>
+    nodejs: <input type="text" id="textarea5"> <br>
+    mysql: <input type="text" id="textarea6"> <br>
+    <input type="button" id="성적입력" value="성적입력">
+    <input type="button" id="초기화" value="초기화"><br>
+    <span id="학생정보입력"></span><br>
+    평균 : <span id='총정리'></span>
+
+    <script>
+        var i = 0;
+        var htmlSum=0;
+        var javascriptSum =0;
+        var cssSum=0;
+        var nodejsSum =0;
+        var mysqlSum=0;
+        var best =0;
+        var maxName ="";
+        var maxValue=0;
+        var maxValue2=0;
+        var maxName2=0;
+
+        document.getElementById('성적입력').addEventListener('click', function() {
+            i++
+
+            var 이름Value = document.getElementById('textarea1').value;
+            var htmlValue =+ document.getElementById('textarea2').value;
+            var javascriptValue =+ document.getElementById('textarea3').value;
+            var cssValue =+ document.getElementById('textarea4').value;
+            var nodejsValue =+ document.getElementById('textarea5').value;
+            var mysqlValue =+ document.getElementById('textarea6').value;
+            var avg = (Number(htmlValue) + Number(javascriptValue) + Number(cssValue) + Number(nodejsValue) + Number(mysqlValue)) / 5;
+            var allAvg = avg/i ;//전체평균
+
+        // 합에 모든 value값 더하기
+            var htmlSum =+ htmlValue;
+            var javascriptSum =+ javascriptValue;
+            var cssSum =+ cssValue;
+            var nodejsSum =+ nodejsValue;
+            var mysqlSum =+ mysqlValue;
+
+        //최고점자 구하기
+            maxName = 이름Value;  //최고점자 이름을 임시저장
+            maxValue = avg;  //평균을 임시저장
+
+            if(maxName>이름Value){
+                maxName = maxName;
+                maxValue = avg
+            }
+
+            document.getElementById('학생정보입력').innerHTML += `이름: ${이름Value} / html :${htmlValue} / javascript ${javascriptValue} / css : ${cssValue} / nodejs : ${nodejsValue} / mysql : ${mysqlValue} / ${이름Value}평균 : ${avg}<br>`
+
+            document.getElementById('총정리').innerHTML = `html평균: ${Number(htmlSum)/i} / javascript평균: ${Number(javascriptSum)/i} / css평균: ${Number(cssSum)/i} / nodejs평균 ${Number(nodejsSum)/i} / mysql평균 ${Number(mysqlSum)/i} / 전체평균 ${allAvg}<br>
+            최고점자 이름:${maxName} 평균 : ${maxValue} `
+
+
+            //value 초기화
+            document.getElementById('textarea1').value = " "
+            document.getElementById('textarea2').value = " "
+            document.getElementById('textarea3').value = " "
+            document.getElementById('textarea4').value = " "
+            document.getElementById('textarea5').value = " "
+            document.getElementById('textarea6').value = " "
+        })
+
+        // clear 하기
+        document.getElementById('초기화').addEventListener('click', function() {
+
+        document.getElementById('학생정보입력').innerHTML = " ";
+        document.getElementById('총정리').innerHTML = " ";
+
+    })
+
+    </script>
+
+</body>
+
+</html>

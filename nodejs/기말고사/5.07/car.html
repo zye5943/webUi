@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <select id = "car">
+      <option value="0">현대</option>
+      <option value="1">기아</option>
+      <option value="2">쌍용</option>
+      <option value="3">벤츠</option>
+      <option value="4">bmw</option>
+    </select>
+    <select id = "color">
+      <option value="0">빨강</option>
+      <option value="1">파랑</option>
+      <option value="2">초록</option>
+      <option value="3">노랑</option>
+      <option value="4">검정</option>
+    </select>
+    <input type="button" id = "req" value="요청">
+    <br>
+    <span id="result"></span>
+  </body>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    $("#req").click(function(){
+
+        $.ajax({
+            url: `http://localhost/getCarPrice`, //http~ localhost까지는 생략할 수 있다(같은 서버에서 보낼 때) -> 이 서버로 보내겠다
+            data:{
+                car : $("#car").val(),        // data에 입력하면 get방식으로 알아서 양식에 맞게 써준다
+                color : $("#color").val()
+            },
+            success: function(response){
+                $("#result").html(response)
+                console.log(response);
+            }
+        })
+    });
+  </script>
+</html>

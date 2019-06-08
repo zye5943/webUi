@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <input type="text" id="text"> <br> <br>
+    <input type="button" value="배수증가" id='id1'>
+    <!--//클릭3초후 아래로 입력한 숫자의 배수씩 증가하며 출력-->
+    <input type="button" value="타이머시작" id='id2'>
+    <!--클릭 3초후 버튼 엎에 1초씩 1씩 증가하는 숫자 출력-->
+    <input type="button" value="타이머종료" id='id3'>
+    <!--클릭 3초후 타이머 종료-->
+    <span id='span'> </span>
+    <div id='div1'></div>
+
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    //-------배수씩 증가-------//
+    var startNum = 1;
+    $("#id1").click(function() {
+        var incre = $("#text").val()
+        var timer = setInterval(function() {
+            var gong = ""
+            gong = startNum * incre + '<br>';
+            $("#div1").append(gong);
+            startNum++
+            if (startNum > 10) {
+                clearInterval(timer)
+            }
+
+        }, 1000);
+    })
+
+
+    //------타이머 시작 ------//
+    $("#id2").click(function() {
+        var cnt = 1;
+        var timer = setInterval(function() {
+            console.log(cnt);
+            cnt++
+            //------타이머 종료 ------//
+            $("#id3").click(function() {
+                setTimeout(function() {
+                    clearInterval(timer);
+                }, 3000);
+            });
+            $("#span").html(cnt);
+        }, 1000);
+    });
+</script>
+
+</html>

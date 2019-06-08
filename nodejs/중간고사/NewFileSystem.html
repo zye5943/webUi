@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+<body>
+    <meta charset="utf-8">
+    <title> 로그인</title>
+</head>
+id: <input type="text" id="inputText1">
+<br>
+password: <input type="text" id="inputText2">
+<br>
+<input type="button" id = 'nyeni' value="로그인">
+<span id= 'id' ></span>
+    <script>
+
+//1부터 100까지 10씩 띄워서 입력하기
+    // var numberText ="";
+    // for( var i= 1; i< 101; i++){
+    //     numberText = numberText + i + " ";
+    //     if(i % 10 ==0){
+    //         numberText += "<br>"
+    //     }
+    // }
+    // document.getElementById('id').innerHTML = numberText;
+    // console.log(numberText);
+
+
+//로그인 하기
+
+    document.getElementById('nyeni').addEventListener('click',function(){
+
+
+    if(
+    document.getElementById('inputText1').value == "polytech" &&
+    Number(document.getElementById('inputText2').value)==123123)
+    {
+        alert("로그인 성공")
+    }else{
+        alert("로그인 실패")
+    }
+    })
+
+    
+    </script>
+</body>
+
+</html>

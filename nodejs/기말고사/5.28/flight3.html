@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>항공기 입력페이지</title>
+</head>
+
+<body>
+    항공코드 : <input type="text" id="aircraftCode" placeholder="항공코드를 입력하세요"><br>
+    항공기명 : <input type="text" id="flightName" placeholder="항공기명을 입력하세요"><br>
+    좌석수 : <input type="text" id="seatValue" placeholder="좌석수를 입력하세요"><br>
+    <input type="button" id="btn1" value="입력">
+    <input type="button" id="btn2" value="취소"><br><br>
+    | 항공코드 | 항공기명 | 좌석수 |
+    <br><br>
+    <div id="divId"> </div>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+//     $("#btn1").click(function() {
+//     var gong = ""
+//     var aircraftCode = $("#aircraftCode").val()
+//     var flightName = $("#flightName").val()
+//     var seatValue = $("#seatValue").val()
+//     gong += aircraftCode +"/" + flightName +"/" + seatValue ;
+//     $("#divId").append(gong);
+// })
+
+$.ajax({
+    url: '/dbSelectNews',
+    data: {},
+    success: function(response) {
+        // /dbSelectNews에서 보낸 rows가 response로 받아짐 (DB에 있는 row(행)이 받아진거) -> 여기서 response는 리스트안에 배열 안에 리스트 형식으로 들어옴. 크게는 배열 1개가 들어옴 [ {},{} ]
+        for (var i = 0; i < response.length; i++) {
+            $("#newsSpan").append(`${response[i].aircraftCode}
+                 ${response[i].flightName} ${response[i].seatValue} <input type="button" value="삭제" onclick="funcDel(${response[i].no})">`); //onclick은 클릭할때 {}을 실행한다.
+        }
+    }
+})
+</script>
+
+
+</html>

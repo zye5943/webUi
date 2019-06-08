@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <input type="button" value="전체 데이터 삭제하기" id="deleteBtn">
+    <input type="button" value="데이터 입력하기" id="writeNewsBtn"><br>
+    <div id="newsSpan"></div>
+
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+    $.ajax({
+        url: '/dbNews',
+        data: {},
+        success: function(response) {
+// /dbNews에서 보낸 rows가 response로 받아짐 (DB에 있는 row(행)이 받아진거) -> 여기서 response는 리스트안에 배열 안에 리스트 형식으로 들어옴. 크게는 배열 1개가 들어옴 [ {},{} ]
+            for (var i = 0; i < response.length; i++) {
+                console.log(response[i].text);
+                //둘중에 하나
+                $("#newsSpan").append(`${response[i].title}${response[i].text} ${response[i].writer}
+                    <input type="button" value="삭제" onclick="funcDel(${response[i].no})">
+                     <input type="button" value="입력" onclick="funcInput(${response[i].no})"> <br>`); //onclick은 클릭할때 {}을 실행한다.
+            }
+        }
+    })
+
+    //각각의 입력 버튼을 눌렀을 떄 이동하는 페이지
+    function funcInput(no) {
+            location.href = `/post방식?${no}`; //?뒤에는 아무 문자 or 숫자가 붙어도 상관없이 /post방식 이 실행될 것-> 걍 post방식.html 실행해주려는것
+    }
+
+
+    function funcDel(num) {
+        $.ajax({
+            url: '/delOne',
+            data: {
+                number: num
+            },
+            success: function(response) {
+                location.href = "/newsList";
+            }
+        })
+    }
+
+    $("#deleteBtn").click(function() {
+        $.ajax({
+            url: '/deleteAllNews',
+            data: {},
+            success: function(response) {
+                location.href = "/newsList";
+            }
+        })
+    });
+
+    $("#writeNewsBtn").click(function() {
+        location.href = "/newsWrite";
+    });
+</script>
+
+</html>

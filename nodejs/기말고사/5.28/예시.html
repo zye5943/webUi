@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="text/javascript">
+    //settimeout은 한번 하고 끝!
+    setTimeout(function() {
+        alert(1);
+    }, 3000);
+
+    //setinterval은 그 시간마다 계속 실행!
+    var cnt = 0;
+    var timer = setInterval(function() {
+        console.log(cnt);
+        cnt++
+        if (cnt == 5) {
+            clearInterval(timer);
+        }
+    }, 1000);
+
+    //clearInterval은 setinterval을 끝내는 명령어!
+</script>
+
+</html>

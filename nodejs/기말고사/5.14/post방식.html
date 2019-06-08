@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    제목 : <input type="text" id="text1"><br>
+    내용 : <input type="text" id="text2"><br>
+    <input type="button" id="btn" value="수정">
+    <input type="button" id="btn2" value="취소">
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+    //-------key point : post 방식으로 주소를 불러올 수 있다-------\\
+
+    //수정
+    $("#btn").click(function() {
+        var title = $("#text1").val();
+        var text = $("#text2").val();
+        $.ajax({
+            url: '/update',
+            type: "POST",
+            data: {
+                title: title,
+                text: text,
+                no: location.href.split("?")[1]
+            },
+            success: function(response) {
+                location.href = "/newsList" //이 주소로 알아서 이동
+            }
+        });
+    })
+
+    //삭제하고 새로고침
+    $("#btn2").click(function() {
+        location.href = "/newsList"
+    });
+</script>
+
+</html>

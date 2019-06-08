@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>항공편 입력페이지</title>
+</head>
+
+<body>
+    <strong> 1단계 | 비행 정보를 입력하세요 ~_~ </strong><br>
+    편명 : <input type="text" id="flightName" placeholder="항공편 이름을 입력하세요">
+    항공코드 : <input type="text" id="aircraftCode" placeholder="항공코드를 입력하세요"><br><br>
+    <strong> 2단계 | 장소를 입력하세요 >_< </strong> <br>
+            출발지 : <input type="text" id="departure" placeholder="출발지를 입력하세요">
+            목적지 : <input type="text" id="arrival" placeholder="목적지를 입력하세요"><br><br>
+            <strong> 3단계 | 시간대를 정하세요 +_+ </strong><br>
+            출발시각 : <input type="text" id="departTime" placeholder="출발 시각을 입력하세요">
+            도착시각 : <input type="text" id="arrivalTime" placeholder="도착 시각을 입력하세요"><br><br>
+            <!--버튼 입력-->
+            <input type="button" id="inputBtn" value="입력">
+            <input type="button" id="cancelBtn" value="취소">
+            <!--프린트 창--> <br>
+            | 편명 | 항공코드 | 출발지 | 목적지 | 출발시각 | 도착시각 |
+            <div id="flightInput"></div>
+
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $("#inputBtn").click(function() {
+        var flightName = $("#flightName").val();
+        var aircraftCode = $("#aircraftCode").val();
+        var departure = $("#departure").val();
+        var arrival = $("#arrival").val();
+        var departTime = $("#departTime").val();
+        var arrivalTime = $("#arrivalTime").val();
+        var gong = ""
+        gong += flightName + "/" +aircraftCode + "/" +departure + "/" +arrival + "/" +departTime + "/" +arrivalTime + '<br>';
+        $("#flightInput").append(gong);
+
+
+        $.ajax({
+            url: '/inputInformation',
+            type: "POST",
+            data: {
+                flightName: flightName,
+                aircraftCode: aircraftCode,
+                departure: departure,
+                arrival: arrival,
+                departTime: departTime,
+                arrivalTime: arrivalTime
+            },
+            success: function(response) {
+                // for (var i = 0; i < response.length; i++) {
+                //     console.log(response[i].fieldCount);
+                //     $("#flightInput").append(`${response[i].flightName}
+                //          ${response[i].aircraftCode} ${response[i].departure} ${response[i].arrival} ${response[i].departTime} ${response[i].arrivalTime}
+                //          <input type="button" value="삭제" onclick="funcDel(${response[i].no})"><br>`); //onclick은 클릭할때 {}을 실행한다.
+                // }
+            }
+        });
+    })
+
+    function funcDel(num) {
+        $.ajax({
+            url: '/delOne',
+            data: {
+                number: num
+            },
+            success: function(response) {
+                location.href = "/flight2";
+            }
+        })
+    }
+</script>
+
+</html>
